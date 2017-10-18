@@ -16,13 +16,11 @@ class App extends Component {
     }
 
     deleteReimder(id) {
-      console.log('deleting in application', id);
-      console.log('this.props', this.props);
+      this.props.deleteReminder(id);
     }
 
     renderReminders(){
       const  { reminders } = this.props;
-      console.log('reminders', reminders);
       return (
         <ul className="list-group col-sm-4">
             {
@@ -42,7 +40,6 @@ class App extends Component {
     }
 
     render() {
-      console.log('this.props', this.props);
       return (
         <div className="App">
           <div className="title">
