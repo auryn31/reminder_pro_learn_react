@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addReminder, deleteReminder, clearReminders } from '../actions';
 import moment from 'moment';
+import FlipMove from 'react-flip-move';
 
 class App extends Component {
 
@@ -25,23 +26,31 @@ class App extends Component {
     renderReminders(){
       const  { reminders } = this.props;
       return (
-        <ul className="list-group col-sm-4">
-            {
-              reminders.map(reminder => {
-                return (<li key={reminder.id} className="list-group-item">
-                  <div className="list-item">
-                    <div>{reminder.text}</div>
-                    <div><em>{moment(new Date(reminder.dueDate)).fromNow()}</em></div>
-                  </div>
-                  <div className="list-item delete-button"
-                    onClick={() => this.deleteReimder(reminder.id)}>
-                    &#x2715;
-                  </div>
-                </li>
-              )
-              })
-            }
-        </ul>
+
+          <ul className="list-group col-sm-4">
+            <FlipMove duration={250} easing="ease-out" enterAnimation="accordionVertical" leaveAnimation="accordionVertical">
+              {
+                reminders.map(reminder => {
+                  return this.renderReminderItems(reminder);
+                })
+              }
+              </FlipMove>
+          </ul>
+      )
+    }
+
+    renderReminderItems(reminder) {
+      return(
+        <li key={reminder.id} className="list-group-item">
+          <div className="list-item">
+            <div>{reminder.text}</div>
+            <div><em>{moment(new Date(reminder.dueDate)).fromNow()}</em></div>
+          </div>
+          <div className="list-item delete-button"
+            onClick={() => this.deleteReimder(reminder.id)}>
+            &#x2715;
+          </div>
+        </li>
       )
     }
 
