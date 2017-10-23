@@ -26,7 +26,6 @@ class App extends Component {
     renderReminders(){
       const  { reminders } = this.props;
       return (
-
           <ul className="list-group col-sm-4">
             <FlipMove duration={250} easing="ease-out" enterAnimation="accordionVertical" leaveAnimation="accordionVertical">
               {
@@ -34,6 +33,13 @@ class App extends Component {
                   return this.renderReminderItems(reminder);
                 })
               }
+              <li  className="list-group-item button-list-group">
+                <div
+                  className="btn btn-danger list-item button-list-item"
+                  onClick={() => this.props.clearReminders()}>
+                  Clear Reminders
+                </div>
+              </li>
               </FlipMove>
           </ul>
       )
@@ -46,10 +52,10 @@ class App extends Component {
             <div>{reminder.text}</div>
             <div><em>{moment(new Date(reminder.dueDate)).fromNow()}</em></div>
           </div>
-          <div className="list-item delete-button"
+          <button className="list-item delete-button btn btn-danger"
             onClick={() => this.deleteReimder(reminder.id)}>
             &#x2715;
-          </div>
+          </button>
         </li>
       )
     }
@@ -60,7 +66,7 @@ class App extends Component {
           <div className="title">
               Reminder Pro
           </div>
-          <div className ="form-inline reminder-form">
+          <div className ="form-inline reminder-form col-sm-4">
             <div className ="form-group">
               <input
                 className="form-control"
@@ -80,13 +86,7 @@ class App extends Component {
             </button>
           </div>
           { this.renderReminders() }
-          <div
-            className="btn btn-danger"
-            onClick={() => this.props.clearReminders()}>
-            Clear Reminders
-          </div>
         </div>
-
       )
     }
 }
