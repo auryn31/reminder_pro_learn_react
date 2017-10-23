@@ -8,7 +8,6 @@ const reminder = (action) => {
     id: Math.random(),
     text,
     dueDate
-
   }
 }
 
@@ -24,19 +23,21 @@ const reminders = (state = [], action) => {
   switch (action.type) {
     case ADD_REMINDER:
         reminders = [...state, reminder(action)]
-        bake_cookie('reminders', reminders);
-        return reminders;
+        return saveAndReturn(reminders);
     case DELETE_REMINDER:
         reminders = removeByID(state, action.id);
-        bake_cookie('reminders', reminders);
-        return reminders;
+        return saveAndReturn(reminders);
     case CLEAR_REMINDERS:
         reminders = [];
-        bake_cookie('reminders', reminders);
-        return reminders;
+        return saveAndReturn(reminders);
     default:
     return state;
   }
+}
+
+const saveAndReturn = (reminders) => {
+  bake_cookie('reminders', reminders);
+  return reminders;
 }
 
 export default reminders;
