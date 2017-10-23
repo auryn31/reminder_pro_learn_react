@@ -36,3 +36,20 @@
   border-left: none;
   border-right: none;
 }
+
+.qr-input-group {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: table;
+  margin: 0 auto;
+}
+
+.qr-input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.qr-image {
+  display: table;
+  margin: 0 auto;
+}

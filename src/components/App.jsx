@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { addReminder, deleteReminder, clearReminders } from '../actions';
 import moment from 'moment';
 import FlipMove from 'react-flip-move';
+import Timer from './Timer';
+import QRCode from './QRCode';
 
 class App extends Component {
 
@@ -86,6 +88,7 @@ class App extends Component {
             </button>
           </div>
           { this.renderReminders() }
+          <QRCode/>
         </div>
       )
     }
