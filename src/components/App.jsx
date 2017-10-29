@@ -72,7 +72,7 @@ class App extends Component {
             <div className ="form-group">
               <input
                 className="form-control"
-                placeholder="I hav to do..."
+                placeholder="I have to do..."
                 onChange = { event => this.setState({text: event.target.value})}
               />
               <input className="form-control"
